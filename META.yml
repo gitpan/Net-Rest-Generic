@@ -1,22 +1,22 @@
----
-abstract: 'A tool for generically interacting with restfull (or restlike) APIs.'
+--- #YAML:1.0
+name:               Net-Rest-Generic
+version:            0.05
+abstract:           A tool for generically interacting with restfull (or restlike) APIs.
 author:
-  - 'Sebastian Green-Husted,Shane Utt <ricecake@tfm.nu>'
-build_requires:
-  Test::More: 0
+    - Sebastian Green-Husted,Shane Utt <ricecake@tfm.nu>
+license:            Artistic_2_0
+distribution_type:  module
 configure_requires:
-  ExtUtils::MakeMaker: 0
-dynamic_config: 1
-generated_by: 'ExtUtils::MakeMaker version 6.66, CPAN::Meta::Converter version 2.112621'
-license: unknown
-meta-spec:
-  url: http://module-build.sourceforge.net/META-spec-v1.4.html
-  version: 1.4
-name: Net-Rest-Generic
-no_index:
-  directory:
-    - t
-    - inc
+    ExtUtils::MakeMaker:  0
+build_requires:
+    Test::More:  0
 requires:
-  perl: 5.006
-version: 0.04
+    perl:  5.006
+no_index:
+    directory:
+        - t
+        - inc
+generated_by:       ExtUtils::MakeMaker version 6.57_05
+meta-spec:
+    url:      http://module-build.sourceforge.net/META-spec-v1.4.html
+    version:  1.4
