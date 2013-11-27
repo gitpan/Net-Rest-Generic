@@ -16,11 +16,11 @@ Net::Rest::Generic - A tool for generically interacting with restfull (or restli
 
 =head1 VERSION
 
-Version 0.06
+Version 0.07
 
 =cut
 
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 =head1 SYNOPSIS
 
@@ -147,6 +147,19 @@ sub addLabel {
 	return $self;
 }
 
+=head2 clone()
+
+The clone function is used to make a hard copy of whatever object you're
+working on so that you can make a 'save point' of your object.
+
+usage my $cloneapi = $api->clone
+
+=cut
+
+sub clone {
+	return dclone(shift);
+}
+
 =head2 setRequestMethod()
 
 The setRequestMethod function is used to change the method that the object
@@ -159,6 +172,24 @@ usage $api->setRequestMethod("POST")->......
 sub setRequestMethod {
 	my ($self, $method) = @_;
 	$self->{mode} = $method;
+	return $self;
+}
+
+=head2 userAgentOptions()
+
+The userAgentOptions method will allow you to send in a hash or hashref
+that will be used as the options for the LWP::UserAgent object used for
+making the api call.
+
+For example:
+$api->userAgentOptions(ssl_opts => {verify_hostname => 0});
+
+=cut
+
+sub userAgentOptions {
+	my $self = shift;
+	my $argref = ref($_[0]) ? $_[0] : {@_};
+	$self->{useragent_options} = $argref;
 	return $self;
 }
 
@@ -205,6 +236,7 @@ L<http://search.cpan.org/dist/Net-Rest-Generic/>
 =head1 LICENSE AND COPYRIGHT
 
 Copyright (C) 2013 Sebastian Green-Husted, All Rights Reserved.
+
 Copyright (C) 2013 Shane Utt, All Rights Reserved.
 
 This program is free software; you can redistribute it and/or modify it

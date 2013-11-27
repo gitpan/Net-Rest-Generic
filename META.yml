@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Net-Rest-Generic
-version:            0.06
+version:            0.07
 abstract:           A tool for generically interacting with restfull (or restlike) APIs.
 author:
     - Sebastian Green-Husted,Shane Utt <ricecake@tfm.nu>
