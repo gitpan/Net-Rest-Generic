@@ -16,11 +16,11 @@ Net::Rest::Generic - A tool for generically interacting with restfull (or restli
 
 =head1 VERSION
 
-Version 0.07
+Version 0.08
 
 =cut
 
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 
 =head1 SYNOPSIS
 
@@ -147,16 +147,16 @@ sub addLabel {
 	return $self;
 }
 
-=head2 clone()
+=head2 cloneApi
 
-The clone function is used to make a hard copy of whatever object you're
+The cloneApi function is used to make a hard copy of whatever object you're
 working on so that you can make a 'save point' of your object.
 
 usage my $cloneapi = $api->clone
 
 =cut
 
-sub clone {
+sub cloneApi {
 	return dclone(shift);
 }
 
@@ -172,6 +172,24 @@ usage $api->setRequestMethod("POST")->......
 sub setRequestMethod {
 	my ($self, $method) = @_;
 	$self->{mode} = $method;
+	return $self;
+}
+
+=head2 setRequestContent()
+
+The setRequestContent method will allow you to send something specifically
+along in the HTTP::Request object when the call to the api is made.
+
+For instance you may want to send the api method you're about to use a json
+data structure, you could do:
+
+$api->setRequestMethod($json)->methodthatrequiresjson
+
+=cut
+
+sub setRequestContent {
+	my ($self, $content) = @_;
+	$self->{request_content} = $content;
 	return $self;
 }
 
